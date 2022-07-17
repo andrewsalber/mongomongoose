@@ -7,9 +7,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: false, useUnifiedTopo
 let Person;
 
 let personSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true},
   age: Number,
-  favoriteFoods: Array
+  favoriteFoods: [String]
 });
 
 const createAndSavePerson = (done) => {
