@@ -138,13 +138,17 @@ router.post("/create-many-people", function (req, res, next) {
 
 const findByName = require("./myApp.js").findPeopleByName;
 router.post("/find-all-by-name", function (req, res, next) {
+  console.log("A",req)
   let t = setTimeout(() => {
     next({ message: "timeout" });
   }, TIMEOUT);
   Person.create(req.body, function (err, pers) {
+    console.log(pers)
+    console.log("D",req.body)
     if (err) {
       return next(err);
     }
+    console.log("C")
     findByName(pers.name, function (err, data) {
       clearTimeout(t);
       if (err) {
