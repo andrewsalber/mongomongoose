@@ -1,7 +1,8 @@
-require('dotenv').config();
+require('dotenv').config({path: './sample.env'});
 var mongoose = require("mongoose");
-//console.log(process.env.MONGO_URI)
-mongoose.connect("mongodb+srv://fcc-new-user-792:pe4edvWuJHZr9xwG@cluster0.5dovu.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: false, useUnifiedTopology: true });
+console.log(process.env.MONGO_URI)
+//mongoose.connect("mongodb+srv://fcc-new-user-792:pe4edvWuJHZr9xwG@cluster0.5dovu.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: false, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: false, useUnifiedTopology: true });
 
 let Person;
 
