@@ -60,11 +60,12 @@ const findPersonById = (personId, done) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-  Person.findById(personId, function(err,data) {
+  Person.findById(personId, function(err,person) {
     if (err) return console.error(err);
-    data.favoriteFoods.push(foodToAdd);
-    console.log(data);
-    done(null,data);
+    person.favoriteFoods.push(foodToAdd).save(function(err,updatedPerson) {
+      if (err) return console.error(err);
+      done(null,updatedPerson)
+    })
   });
 };
 
